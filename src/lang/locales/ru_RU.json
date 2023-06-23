@@ -1,11 +1,27 @@
 {
   "home": "Домой",
-
-  "sidenav.dashboard": "Дашборд",
-  "sidenav.dashboard.default": "По умолчанию",
-  "sidenav.dashboard.analytic": "Аналитика",
-  "sidenav.dashboard.sales": "Продажи",
-
+  "sidenav.dashboard": "Основные",
+  "sidenav.dashboard.default": "Дашборд",
+  "sidenav.dashboard.catalogue": "Каталог",
+  "sidenav.dashboard.catalogue.products": "Продукты",
+  "sidenav.dashboard.catalogue.categories": "Категории",
+  "sidenav.dashboard.catalogue.collections": "Коллекции",
+  "sidenav.dashboard.catalogue.combo": "Комбо",
+  "sidenav.dashboard.orders": "Заказы",
+  "sidenav.dashboard.clients": "Клиенты",
+  "sidenav.dashboard.clients.clients-list": "Список клиентов",
+  "sidenav.dashboard.clients.clients-group": "Группы клиентов",
+  "sidenav.dashboard.banners": "Баннеры",
+  "sidenav.dashboard.promo-codes": "Промокоды",
+  "sidenav.dashboard.offline-points": "офлайн-точки",
+  "sidenav.dashboard.offline-points.addresses": "Адреса",
+  "sidenav.dashboard.offline-points.geo-areas": "Гео-зоны",
+  "sidenav.dashboard.employs": "Сотрудники",
+  "sidenav.dashboard.spam": "Рассылки",
+  "sidenav.systems": "Системные",
+  "sidenav.systems.settings": "Настройки",
+  "sidenav.systems.mobile-app": "Мобильное приложение",
+  "sidenav.systems.logs": "Логи",
   "sidenav.apps": "Приложения",
   "sidenav.apps.mail": "Почта",
   "sidenav.apps.chat": "Чат",
@@ -19,7 +35,6 @@
   "sidenav.apps.ecommerce.addProduct": "Добавить продукт",
   "sidenav.apps.ecommerce.productList": "Список продуктов",
   "sidenav.apps.ecommerce.orders": "Заявки",
-
   "sidenav.components": "Компоненты",
   "sidenav.components.general": "Главная",
   "sidenav.components.general.button": "Кнопка",
@@ -28,7 +43,6 @@
   "sidenav.components.layout": "Макет",
   "sidenav.components.layout.grid": "Сетка",
   "sidenav.components.layout.layout": "Макет",
-
   "sidenav.components.navigation": "Навигация",
   "sidenav.components.navigation.affix": "Афикс",
   "sidenav.components.navigation.breadcrumb": "Хлебные крошки",
@@ -37,7 +51,6 @@
   "sidenav.components.navigation.pagination": "Пагинация",
   "sidenav.components.navigation.pageHeader": "Страница Хедер",
   "sidenav.components.navigation.steps": "Шаги",
-
   "sidenav.components.dataEntry": "Ввод данных",
   "sidenav.components.dataEntry.autoComplete": "Автозаполнеие",
   "sidenav.components.dataEntry.checkbox": "Чекбокс",
@@ -56,7 +69,6 @@
   "sidenav.components.dataEntry.transfer": "Трансфер",
   "sidenav.components.dataEntry.timePicker": "Выбор времени",
   "sidenav.components.dataEntry.upload": "Загрузка",
-
   "sidenav.components.dataDisplay": "Отображение данных",
   "sidenav.components.dataDisplay.avatar": "Аватар",
   "sidenav.components.dataDisplay.badge": "Бадж",
@@ -76,7 +88,6 @@
   "sidenav.components.dataDisplay.tag": "Тег",
   "sidenav.components.dataDisplay.tabs": "Табы",
   "sidenav.components.dataDisplay.table": "Таблица",
-
   "sidenav.components.feedback": "Обратная связь",
   "sidenav.components.feedback.alert": "Алерт",
   "sidenav.components.feedback.drawer": "Дравер",
@@ -88,21 +99,17 @@
   "sidenav.components.feedback.result": "Результат",
   "sidenav.components.feedback.spin": "Крутилка",
   "sidenav.components.feedback.skeleton": "Скелетон",
-
   "sidenav.components.other": "Другое",
   "sidenav.components.other.anchor": "Якорь",
   "sidenav.components.other.backtop": "НазадВверх",
   "sidenav.components.other.configProvider": "Конфигурация провайдера",
   "sidenav.components.other.divider": "Девайдер",
-
   "sidenav.charts": "Графики",
   "sidenav.charts.apex": "Аппекс графики",
   "sidenav.charts.chartjs": "Чартжеэс",
-
   "sidenav.maps": "Карты",
   "sidenav.maps.google": "Гугл карты",
   "sidenav.maps.simple": "Простые карты",
-
   "sidenav.pages": "Страницы",
   "sidenav.pages.profile": "Профиль",
   "sidenav.pages.invoice": "Счет",
@@ -110,18 +117,15 @@
   "sidenav.pages.faq": "Факью",
   "sidenav.pages.setting": "Настройки",
   "sidenav.pages.userlist": "Список юзеров",
-
   "sidenav.authentication": "Аутентификация",
   "sidenav.authentication.login.1": "Логин 1",
   "sidenav.authentication.login.2": "Логин 2",
   "sidenav.authentication.register.1": "Регистрация 1",
   "sidenav.authentication.register.2": "Регистрация 2",
   "sidenav.authentication.forgetPassword": "Забыли Пароль",
-
   "sidenav.errors": "Ошибки",
   "sidenav.errors.error.1": "Страница ошибок 1",
   "sidenav.errors.error.2": "Страница ошибок 2",
-
   "sidenav.docs": "Дока",
   "sidenav.docs.documentation": "Документация",
   "sidenav.docs.changelog": "Лог изменений"
