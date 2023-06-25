@@ -35,7 +35,7 @@ export class UserList extends Component {
 
     render() {
         const {  userProfileVisible, selectedUser } = this.state;
-        const { users  } = this.props;
+        const { users, isLoading  } = this.props;
 
         const tableColumns = [
             {
@@ -97,7 +97,7 @@ export class UserList extends Component {
         return (
             <Card bodyStyle={{'padding': '0px'}}>
                 <div className="table-responsive">
-                    <Table columns={tableColumns} dataSource={users} rowKey='id' />
+                    <Table loading={isLoading} columns={tableColumns} dataSource={users} rowKey='id' />
                 </div>
                 <UserView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/>
             </Card>

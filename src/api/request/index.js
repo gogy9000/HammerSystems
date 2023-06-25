@@ -4,7 +4,7 @@ import {publicInstance} from "../instanses/publicInstance";
 export const request = async (config) => {
 
     const onSuccess = (response) => {
-        return response
+        return response.data
     }
     const onError = (error) => {
         return Promise.reject(error);
