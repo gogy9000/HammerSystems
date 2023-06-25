@@ -14,17 +14,21 @@ export default function mockServer({ environment = 'test' }) {
 				signInUserData
 			})
 		},
+
         routes() {
+
             this.urlPrefix = ''
             this.namespace = ''
+            authFakeApi(this, API_BASE_URL)
+
             this.passthrough(request => {
                 const isExternal = request.url.startsWith('http')
                 return isExternal
             })
-            this.passthrough()
-            
-            
-            authFakeApi(this, API_BASE_URL)
+            this.passthrough(request => {
+                const isExternal = request.url.startsWith('https')
+                return isExternal
+            })
         },
     })
 }

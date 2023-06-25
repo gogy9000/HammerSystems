@@ -1,14 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { AUTH_TOKEN } from 'constants/AuthConstant';
+import {AUTH_TOKEN, IS_AUTH} from 'constants/AuthConstant';
 import FirebaseService from 'services/FirebaseService';
 import AuthService from 'services/AuthService';
+
+const writeIsAuth=(isAuth)=>{
+	localStorage.setItem(IS_AUTH, JSON.stringify(isAuth));
+}
 
 export const initialState = {
 	loading: false,
 	message: '',
 	showMessage: false,
 	redirect: '',
-	token: localStorage.getItem(AUTH_TOKEN) || null
+	token: localStorage.getItem(AUTH_TOKEN) || null,
+	isAuth: JSON.parse(localStorage.getItem(IS_AUTH))||false,
 }
 
 export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithValue }) => {
@@ -17,6 +22,7 @@ export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithVal
 		const response = await AuthService.login({email, password})
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
+		writeIsAuth(true)
 		return token;
 	} catch (err) {
 		return rejectWithValue(err.response?.data?.message || 'Error')
@@ -29,6 +35,7 @@ export const signUp = createAsyncThunk('auth/register',async (data, { rejectWith
 		const response = await AuthService.register({email, password})
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
+		writeIsAuth(true)
 		return token;
 	} catch (err) {
 		return rejectWithValue(err.response?.data?.message || 'Error')
@@ -38,6 +45,7 @@ export const signUp = createAsyncThunk('auth/register',async (data, { rejectWith
 export const signOut = createAsyncThunk('auth/logout',async () => {
     const response = await FirebaseService.signOutRequest()
 	localStorage.removeItem(AUTH_TOKEN);
+	writeIsAuth(false)
     return response.data
 })
 
@@ -46,6 +54,7 @@ export const signInWithGoogle = createAsyncThunk('auth/signInWithGoogle', async 
 		const response = await AuthService.loginInOAuth()
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
+		writeIsAuth(true)
 		return token;
 	} catch (err) {
 		return rejectWithValue(err.response?.data?.message || 'Error')
@@ -57,6 +66,7 @@ export const signInWithFacebook = createAsyncThunk('auth/signInWithFacebook', as
 		const response = await AuthService.loginInOAuth()
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
+		writeIsAuth(true)
 		return token;
 	} catch (err) {
 		return rejectWithValue(err.response?.data?.message || 'Error')
@@ -104,6 +114,7 @@ export const authSlice = createSlice({
 				state.loading = false
 				state.redirect = '/'
 				state.token = action.payload
+				state.isAuth=true
 			})
 			.addCase(signIn.rejected, (state, action) => {
 				state.message = action.payload
@@ -114,6 +125,7 @@ export const authSlice = createSlice({
 				state.loading = false
 				state.token = null
 				state.redirect = '/'
+				state.isAuth=false
 			})
 			.addCase(signOut.rejected, (state) => {
 				state.loading = false
@@ -127,6 +139,7 @@ export const authSlice = createSlice({
 				state.loading = false
 				state.redirect = '/'
 				state.token = action.payload
+				state.isAuth=true
 			})
 			.addCase(signUp.rejected, (state, action) => {
 				state.message = action.payload
@@ -140,6 +153,7 @@ export const authSlice = createSlice({
 				state.loading = false
 				state.redirect = '/'
 				state.token = action.payload
+				state.isAuth=true
 			})
 			.addCase(signInWithGoogle.rejected, (state, action) => {
 				state.message = action.payload
@@ -153,6 +167,7 @@ export const authSlice = createSlice({
 				state.loading = false
 				state.redirect = '/'
 				state.token = action.payload
+				state.isAuth=true
 			})
 			.addCase(signInWithFacebook.rejected, (state, action) => {
 				state.message = action.payload
