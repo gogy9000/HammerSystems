@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Card, Table, Tag, Tooltip, message, Button } from 'antd';
-import { EyeOutlined, DeleteOutlined } from '@ant-design/icons';
+import React, {Component} from 'react'
+import {Card, Table, Tag, Tooltip, message, Button} from 'antd';
+import {EyeOutlined, DeleteOutlined} from '@ant-design/icons';
 import dayjs from 'dayjs';
 import UserView from './UserView';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -16,7 +16,7 @@ export class UserList extends Component {
         this.setState({
             users: this.state.users.filter(item => item.id !== userId),
         })
-        message.success({ content: `Deleted user ${userId}`, duration: 2 });
+        message.success({content: `Deleted user ${userId}`, duration: 2});
     }
 
     showUserProfile = userInfo => {
@@ -34,15 +34,17 @@ export class UserList extends Component {
     }
 
     render() {
-        const {  userProfileVisible, selectedUser } = this.state;
-        const { users, isLoading  } = this.props;
+        const {userProfileVisible, selectedUser} = this.state;
+        const {users, isLoading, onHandleRow} = this.props;
 
         const tableColumns = [
             {
                 title: 'User',
                 dataIndex: 'name',
                 render: (_, record) => (
-                    <div className="d-flex">
+                    <div style={{cursor: "pointer"}} onClick={() => {
+                        onHandleRow(record.id)
+                    }} className="d-flex">
                         <AvatarStatus src={record.img} name={record.name} subTitle={record.email}/>
                     </div>
                 ),
@@ -73,7 +75,7 @@ export class UserList extends Component {
                 title: 'Status',
                 dataIndex: 'status',
                 render: status => (
-                    <Tag className ="text-capitalize" color={status === 'active'? 'cyan' : 'red'}>{status}</Tag>
+                    <Tag className="text-capitalize" color={status === 'active' ? 'cyan' : 'red'}>{status}</Tag>
                 ),
                 sorter: {
                     compare: (a, b) => a.status.length - b.status.length,
@@ -85,10 +87,14 @@ export class UserList extends Component {
                 render: (_, elm) => (
                     <div className="text-right d-flex justify-content-end">
                         <Tooltip title="View">
-                            <Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => {this.showUserProfile(elm)}} size="small"/>
+                            <Button type="primary" className="mr-2" icon={<EyeOutlined/>} onClick={() => {
+                                this.showUserProfile(elm)
+                            }} size="small"/>
                         </Tooltip>
                         <Tooltip title="Delete">
-                            <Button danger icon={<DeleteOutlined />} onClick={()=> {this.deleteUser(elm.id)}} size="small"/>
+                            <Button danger icon={<DeleteOutlined/>} onClick={() => {
+                                this.deleteUser(elm.id)
+                            }} size="small"/>
                         </Tooltip>
                     </div>
                 )
@@ -97,9 +103,14 @@ export class UserList extends Component {
         return (
             <Card bodyStyle={{'padding': '0px'}}>
                 <div className="table-responsive">
-                    <Table loading={isLoading} columns={tableColumns} dataSource={users} rowKey='id' />
+                    <Table loading={isLoading}
+                           columns={tableColumns}
+                           dataSource={users}
+                           rowKey='id'/>
                 </div>
-                <UserView data={selectedUser} visible={userProfileVisible} close={()=> {this.closeUserProfile()}}/>
+                <UserView data={selectedUser} visible={userProfileVisible} close={() => {
+                    this.closeUserProfile()
+                }}/>
             </Card>
         )
     }

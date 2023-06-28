@@ -1,7 +1,8 @@
 import {useClientsQuery} from "../../../../features/clients/api";
 import {useMemo} from "react";
 import usersData from '../../../../assets/data/user-list.data.json'
-
+import { useNavigate } from "react-router-dom";
+import {APP_PREFIX_PATH} from "../../../../configs/AppConfig";
 export const useClients = () => {
 
     const {users, isLoading} = useClientsQuery({}, {
@@ -32,13 +33,20 @@ export const useClients = () => {
             return {
                 users,
                 isLoading,
+
             }
         },
     })
+    const navigate = useNavigate();
+
+    const onHandleRow = (id)=>{
+        navigate(`${APP_PREFIX_PATH}/dashboards/clients/settings/${id}`);
+    }
 
     return useMemo(() => ({
         users,
         isLoading,
+        onHandleRow
     }), [users, isLoading])
 
 }

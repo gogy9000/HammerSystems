@@ -25,10 +25,7 @@ export default function mockServer({ environment = 'test' }) {
                 const isExternal = request.url.startsWith('http')
                 return isExternal
             })
-            this.passthrough(request => {
-                const isExternal = request.url.startsWith('https')
-                return isExternal
-            })
+            this.passthrough("https://jsonplaceholder.typicode.com/**")
         },
     })
 }
