@@ -17,7 +17,7 @@ const themes = {
 const environment = process.env.NODE_ENV
 
 if (environment !== 'production') {
-	mockServer({ environment })
+	// mockServer({ environment })
 }
 
 function App() {

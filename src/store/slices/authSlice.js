@@ -19,7 +19,12 @@ export const initialState = {
 export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithValue }) => {
 	const { email, password } = data
 	try {
-		const response = await AuthService.login({email, password})
+		const response = {
+			data: {
+				token: 'wVYrxaeNa9OxdnULvde1Au5m5w63'
+			}
+		}
+			// await AuthService.login({email, password})
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
 		writeIsAuth(true)
@@ -32,7 +37,12 @@ export const signIn = createAsyncThunk('auth/login',async (data, { rejectWithVal
 export const signUp = createAsyncThunk('auth/register',async (data, { rejectWithValue }) => {
 	const { email, password } = data
 	try {
-		const response = await AuthService.register({email, password})
+		// const response = await AuthService.register({email, password})
+		const response = {
+			data: {
+				token: 'wVYrxaeNa9OxdnULvde1Au5m5w63'
+			}
+		}
 		const token = response.data.token;
 		localStorage.setItem(AUTH_TOKEN, token);
 		writeIsAuth(true)
