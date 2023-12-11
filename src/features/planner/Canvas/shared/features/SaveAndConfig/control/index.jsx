@@ -1,8 +1,13 @@
-import {useSaveControl} from "../hooks/useSaveControl";
+import {useSaveAndLoadControl} from "../hooks/useSaveAndLoadControl";
 
 export const SaveControl = () => {
-    const {ref, handleFileChange} = useSaveControl()
+    const {ref, handleFileChange} = useSaveAndLoadControl()
     return <>
-        <input onChange={handleFileChange} ref={ref} type={'file'} hidden/>
+        <input
+            onChange={handleFileChange}
+            ref={ref}
+            type={'file'}
+            hidden accept=".json"
+        />
     </>
 }

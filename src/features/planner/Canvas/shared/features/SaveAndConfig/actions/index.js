@@ -18,13 +18,13 @@ export const saveConfig = createAsyncThunk
             constructionReducer,
             furnitureReducer
         }
+        const time=`${new Date().toLocaleDateString()},${new Date().getHours()}-${new Date().getMinutes()}-${new Date().getSeconds()}`
         const jsonData = JSON.stringify(config);
         const blob = new Blob([jsonData], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
-
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'data.json';
+        link.download = `3D_planner_config(${time}).json`;
         link.click();
         URL.revokeObjectURL(url);
     } catch (e) {
