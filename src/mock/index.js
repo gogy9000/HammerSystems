@@ -25,7 +25,18 @@ export default function mockServer({ environment = 'test' }) {
                 const isExternal = request.url.startsWith('http')
                 return isExternal
             })
+
+            this.passthrough(request => {
+                console.log(request)
+                const isExternal = request.url.startsWith('/tableAndChairs')
+                return isExternal
+            })
+            this.passthrough(request => {
+                const isExternal = request.url.startsWith('textures')
+                return isExternal
+            })
             this.passthrough("https://jsonplaceholder.typicode.com/**")
+            // this.passthrough("/tableAndChairs/scene.gltf")
         },
     })
 }

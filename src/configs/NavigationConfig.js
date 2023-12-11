@@ -181,8 +181,13 @@ const dashBoardNavTree = [{
         ...promoCodesNavTree,
         ...offlinePoints,
         ...employsNavTree,
-        ...spamNavTree
-
+        ...spamNavTree,
+        {key: 'dashboards-planner',
+            path: `${APP_PREFIX_PATH}/dashboards/planner`,
+            title: '3D-planner',
+            icon: DashboardOutlined,
+            breadcrumb: false,
+            submenu: []}
     ]
 }]
 
