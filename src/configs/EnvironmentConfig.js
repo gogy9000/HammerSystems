@@ -19,6 +19,7 @@ const getEnv = () => {
 		case 'test':
 			return test
 		default:
+			return prod
 			break;
 	}
 }
